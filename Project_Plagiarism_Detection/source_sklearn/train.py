@@ -5,8 +5,7 @@ import os
 import pandas as pd
 
 from sklearn.externals import joblib
-
-## TODO: Import any additional libraries you need to define a model
+from sklearn.neighbors import KNeighborsClassifier
 
 
 # Provided model load function
@@ -39,6 +38,7 @@ if __name__ == '__main__':
     parser.add_argument('--data-dir', type=str, default=os.environ['SM_CHANNEL_TRAIN'])
     
     ## TODO: Add any additional arguments that you will need to pass into your model
+    parser.add_argument('--n_neighbors', type=int, default=2)
     
     # args holds all passed-in arguments
     args = parser.parse_args()
@@ -56,12 +56,12 @@ if __name__ == '__main__':
     
 
     ## TODO: Define a model 
-    model = None
+    model = KNeighborsClassifier(n_neighbors=2)
     
     
     ## TODO: Train the model
-    
-    
+    model = model.fit(train_x, train_y)
+ 
     
     ## --- End of your code  --- ##
     

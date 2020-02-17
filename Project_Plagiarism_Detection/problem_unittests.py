@@ -46,7 +46,6 @@ def test_numerical_df(numerical_dataframe):
 
 
 def test_containment(complete_df, containment_fn):
-    
     # check basic format and value 
     # for n = 1 and just the fifth file
     test_val = containment_fn(complete_df, 1, 'g0pA_taske.txt')
@@ -70,6 +69,7 @@ def test_containment(complete_df, containment_fn):
         results_3gram.append(val_3)
         
     # check correct results
+    print(ngram_1, results_1gram)
     assert all(np.isclose(results_1gram, ngram_1, rtol=1e-04)), \
     'n=1 calculations are incorrect. Double check the intersection calculation.'
     # check correct results
